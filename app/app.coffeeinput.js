@@ -9,17 +9,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var CoffeeInput = (function () {
+    function CoffeeInput() {
     }
-    AppComponent = __decorate([
+    CoffeeInput.prototype.ngOnInit = function () {
+        this.coffee = new Coffee;
+        this.coffee.amount = 0;
+        this.coffee.name = 'Potato';
+        this.coffee.roast = 'Burnt';
+        this.coffee.roaster = 'Spuds';
+    };
+    CoffeeInput = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            template: "\n        <h1>Hello Angular!</h1><coffee-input></coffee-input>                \n        "
+            selector: 'coffee-input',
+            template: "\n                <h1>Put dem coffee deets here!</h1>\n                   <input [(ngModel)]=coffee.name>\n                "
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], CoffeeInput);
+    return CoffeeInput;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.CoffeeInput = CoffeeInput;
+var Coffee = (function () {
+    function Coffee() {
+    }
+    return Coffee;
+}());
+exports.Coffee = Coffee;
+//# sourceMappingURL=app.coffeeinput.js.map
