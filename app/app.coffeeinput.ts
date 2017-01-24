@@ -1,10 +1,14 @@
 import {Component} from '@angular/core';
+import {Coffee} from './app.coffee'
 
 @Component({
     selector: 'coffee-input',
     template: `
                 <h1>Put dem coffee deets here!</h1>
-                   <input [(ngModel)]=coffee.name>
+                   <input [(ngModel)]=coffee.name><br />
+                   <input [(ngModel)]=coffee.roaster><br />
+                   <input [(ngModel)]=coffee.roast><br />
+                   <input [(ngModel)]=coffee.amount>
                 `
 })
 
@@ -19,10 +23,3 @@ export class CoffeeInput {
          this.coffee.roaster = 'Spuds';
      }
 }
-
- export class Coffee {
-     name: string;
-     roaster: string;
-     roast: string;
-     amount: number;
- }
