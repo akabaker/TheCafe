@@ -16,13 +16,14 @@ var CoffeeInput = (function () {
         this.coffee.name = 'Potato';
         this.coffee.roast = 'Burnt';
         this.coffee.roaster = 'Spuds';
+        this.coffee.color = 'red';
     };
     return CoffeeInput;
 }());
 CoffeeInput = __decorate([
     core_1.Component({
         selector: 'coffee-input',
-        template: "\n                <h1>Put dem coffee deets here!</h1>\n                   <input [(ngModel)]=coffee.name><br />\n                   <input [(ngModel)]=coffee.roaster><br />\n                   <input [(ngModel)]=coffee.roast><br />\n                   <input [(ngModel)]=coffee.amount>\n                "
+        template: "\n                <h1>Put dem coffee deets here!</h1>\n                <div [style.color]=\"coffee.color\">\n                    Current Coffee details <br />\n                    Name: {{coffee.name}}\n                </div>\n                <input [(ngModel)]=coffee.name><br />\n                <input [(ngModel)]=coffee.roaster><br />\n                <input [(ngModel)]=coffee.roast><br />\n                <input [(ngModel)]=coffee.amount>\n                "
     })
 ], CoffeeInput);
 exports.CoffeeInput = CoffeeInput;

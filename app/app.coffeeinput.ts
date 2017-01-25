@@ -5,10 +5,14 @@ import {Coffee} from './app.coffee'
     selector: 'coffee-input',
     template: `
                 <h1>Put dem coffee deets here!</h1>
-                   <input [(ngModel)]=coffee.name><br />
-                   <input [(ngModel)]=coffee.roaster><br />
-                   <input [(ngModel)]=coffee.roast><br />
-                   <input [(ngModel)]=coffee.amount>
+                <div [style.color]="coffee.color">
+                    Current Coffee details <br />
+                    Name: {{coffee.name}}
+                </div>
+                <input [(ngModel)]=coffee.name><br />
+                <input [(ngModel)]=coffee.roaster><br />
+                <input [(ngModel)]=coffee.roast><br />
+                <input [(ngModel)]=coffee.amount>
                 `
 })
 
@@ -21,5 +25,6 @@ export class CoffeeInput {
          this.coffee.name = 'Potato';
          this.coffee.roast = 'Burnt';
          this.coffee.roaster = 'Spuds';
+         this.coffee.color = 'red';
      }
 }

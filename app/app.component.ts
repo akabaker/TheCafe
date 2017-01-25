@@ -3,8 +3,11 @@ import {Component} from '@angular/core';
 @Component({
     selector: 'my-app',
     template: `
-        <h1>Hello Angular!</h1><coffee-input></coffee-input>                
+        <h1>{{title}}</h1>
+        <coffee-input></coffee-input>                
         `
 })
 
-export class AppComponent {}
+export class AppComponent {
+    title = 'Coffee Inventory'    
+}
