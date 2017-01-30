@@ -3,17 +3,7 @@ import {Coffee} from './app.coffee'
 
 @Component({
     selector: 'coffee-input',
-    template: `
-                <h1>Put dem coffee deets here!</h1>
-                <div [style.color]="coffee.color">
-                    Current Coffee details <br />
-                    Name: {{coffee.name}}
-                </div>
-                <input [(ngModel)]=coffee.name><br />
-                <input [(ngModel)]=coffee.roaster><br />
-                <input [(ngModel)]=coffee.roast><br />
-                <input [(ngModel)]=coffee.amount>
-                `
+    templateUrl: 'app/app.coffeeinput.html'
 })
 
 export class CoffeeInput {
@@ -27,4 +17,8 @@ export class CoffeeInput {
          this.coffee.roaster = 'Spuds';
          this.coffee.color = 'red';
      }
+
+     enterCoffee() {
+         this.coffee.color = 'blue';
+        }
 }
