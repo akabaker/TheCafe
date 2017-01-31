@@ -1,0 +1,8 @@
+<h1>{{title}}</h1>
+
+<ul>
+    <li *ngFor="let coffee of coffees">
+        <span>{{coffee.name}}<br/> Roaster: {{coffee.roaster}}</span><br/>
+        <span>Roast: {{coffee.roast}}<br/> Amount: {{coffee.amount}}</span>
+    </li>
+</ul>

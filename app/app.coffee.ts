@@ -3,5 +3,4 @@
      roaster: string;
      roast: string;
      amount: number;
-     color: string;
  }

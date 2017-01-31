@@ -4,10 +4,11 @@ import {Component} from '@angular/core';
     selector: 'my-app',
     template: `
         <h1>{{title}}</h1>
-        <coffee-input></coffee-input>                
+        <inventory></inventory>
+        <coffee-input></coffee-input>            
         `
 })
 
 export class AppComponent {
-    title = 'Coffee Inventory'    
+    title = 'CafeTorium'    
 }
