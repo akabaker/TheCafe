@@ -16,10 +16,9 @@ var CoffeeInput = (function () {
         this.coffee.name = 'Potato';
         this.coffee.roast = 'Burnt';
         this.coffee.roaster = 'Spuds';
-        this.coffee.color = 'red';
     };
     CoffeeInput.prototype.enterCoffee = function () {
-        this.coffee.color = 'blue';
+        alert("Thank you for your input!");
     };
     return CoffeeInput;
 }());
