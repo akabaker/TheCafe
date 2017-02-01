@@ -25,7 +25,7 @@ var CoffeeInput = (function () {
 CoffeeInput = __decorate([
     core_1.Component({
         selector: 'coffee-input',
-        templateUrl: 'app/app.coffeeinput.html'
+        templateUrl: 'app/component.coffee/app.coffeeinput.html'
     })
 ], CoffeeInput);
 exports.CoffeeInput = CoffeeInput;

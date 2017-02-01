@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {Coffee} from './app.coffee'
+import {Coffee} from './component.coffee/app.coffee'
 
 @Component({
     selector: 'inventory',

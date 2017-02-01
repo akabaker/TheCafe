@@ -3,7 +3,7 @@ import {Coffee} from './app.coffee'
 
 @Component({
     selector: 'coffee-input',
-    templateUrl: 'app/app.coffeeinput.html'
+    templateUrl: 'app/component.coffee/app.coffeeinput.html'
 })
 
 export class CoffeeInput {

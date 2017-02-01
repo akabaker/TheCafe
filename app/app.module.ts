@@ -1,7 +1,7 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import {CoffeeInput} from './app.coffeeinput';
+import {CoffeeInput} from './component.coffee/app.coffeeinput';
 import {Inventory} from './app.inventory'
 import {FormsModule} from '@angular/forms';
 
