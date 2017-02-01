@@ -9,7 +9,7 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var app_component_1 = require("./app.component");
 var app_coffeeinput_1 = require("./component.coffee/app.coffeeinput");
-var app_inventory_1 = require("./app.inventory");
+var app_inventory_1 = require("./component.inventory/app.inventory");
 var forms_1 = require("@angular/forms");
 var AppModule = (function () {
     function AppModule() {

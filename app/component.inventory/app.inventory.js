@@ -20,7 +20,7 @@ var Inventory = (function () {
 Inventory = __decorate([
     core_1.Component({
         selector: 'inventory',
-        templateUrl: 'app/app.inventory.html'
+        templateUrl: 'app/component.inventory/app.inventory.html'
     })
 ], Inventory);
 exports.Inventory = Inventory;
