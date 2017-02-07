@@ -8,8 +8,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var app_component_1 = require("./app.component");
-var app_coffeeinput_1 = require("./component.coffee/app.coffeeinput");
-var app_inventory_1 = require("./component.inventory/app.inventory");
+var app_coffeeinput_1 = require("./coffee/app.coffeeinput");
+var app_inventory_1 = require("./inventory/app.inventory");
 var forms_1 = require("@angular/forms");
 var AppModule = (function () {
     function AppModule() {
@@ -22,7 +22,7 @@ AppModule = __decorate([
             forms_1.FormsModule
         ],
         declarations: [app_component_1.AppComponent, app_coffeeinput_1.CoffeeInput, app_inventory_1.Inventory],
-        bootstrap: [app_component_1.AppComponent, app_coffeeinput_1.CoffeeInput, app_inventory_1.Inventory]
+        bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);
 exports.AppModule = AppModule;

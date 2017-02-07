@@ -1,0 +1,7 @@
+<h1>{{title}}</h1>
+
+<ul>
+    <li *ngFor="let currentCoffee of coffees">
+        <coffee-input [coffee]="currentCoffee"></coffee-input>
+    </li>
+</ul>

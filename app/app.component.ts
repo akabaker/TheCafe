@@ -4,8 +4,7 @@ import {Component} from '@angular/core';
     selector: 'my-app',
     template: `
         <h1>{{title}}</h1>
-        <inventory></inventory>
-        <coffee-input></coffee-input>            
+        <inventory></inventory>      
         `
 })
 
