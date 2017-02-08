@@ -18,4 +18,8 @@ export class Inventory {
             {name: 'Toasted Southern Pecan', roaster: 'The Grind', roast: 'light', amount: 5}
         ]
      }
+
+     expandInventory() {
+         this.coffees.push({name: '', roaster: '', roast: '', amount: 0});
+     }
 }

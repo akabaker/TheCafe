@@ -1,7 +1,14 @@
 <h1>{{title}}</h1>
 
-<ul>
-    <li *ngFor="let currentCoffee of coffees">
-        <coffee-input [coffee]="currentCoffee"></coffee-input>
-    </li>
-</ul>
+<button (click)="expandInventory()">Add Coffee</button>
+<table>
+    <tr>
+        <th>Name</th><th>Roaster</th><th>Roast</th><th>Amount</th>
+    </tr>
+    <tr *ngFor="let currentCoffee of coffees">
+        <td><input [(value)]=currentCoffee.name/></td>
+        <td><input [(value)]=currentCoffee.roaster/></td>
+        <td><input [(value)]=currentCoffee.roast/></td>
+        <td><input [(value)]=currentCoffee.amount/></td>
+    </tr>    
+</table>

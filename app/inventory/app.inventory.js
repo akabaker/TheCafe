@@ -16,6 +16,9 @@ var Inventory = (function () {
             { name: 'Toasted Southern Pecan', roaster: 'The Grind', roast: 'light', amount: 5 }
         ];
     };
+    Inventory.prototype.expandInventory = function () {
+        this.coffees.push({ name: '', roaster: '', roast: '', amount: 0 });
+    };
     return Inventory;
 }());
 Inventory = __decorate([
