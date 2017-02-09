@@ -1,10 +1,9 @@
 import {Component} from '@angular/core';
-import {Coffee} from '../coffee/app.coffee'
-import {CoffeeInput} from '../coffee/app.coffeeinput'
+import {Coffee} from '../coffee/coffee.component'
 
 @Component({
     selector: 'inventory',
-    templateUrl: 'app/inventory/app.inventory.html'
+    templateUrl: 'app/inventory/inventory.component.html'
 })
 
 export class Inventory {

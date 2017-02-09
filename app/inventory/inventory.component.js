@@ -12,16 +12,20 @@ var Inventory = (function () {
     }
     Inventory.prototype.ngOnInit = function () {
         this.coffees = [
-            { name: 'La Falda', roaster: 'Your Mother', roast: 'dark', amount: 123 }
+            { name: 'Toasted Southern Pecan', roaster: 'The Grind', roast: 'light', amount: 5 },
+            { name: 'Toasted Southern Pecan', roaster: 'The Grind', roast: 'light', amount: 5 }
         ];
+    };
+    Inventory.prototype.expandInventory = function () {
+        this.coffees.push({ name: '', roaster: '', roast: '', amount: 0 });
     };
     return Inventory;
 }());
 Inventory = __decorate([
     core_1.Component({
         selector: 'inventory',
-        templateUrl: 'app/component.inventory/app.inventory.html'
+        templateUrl: 'app/inventory/inventory.component.html'
     })
 ], Inventory);
 exports.Inventory = Inventory;
-//# sourceMappingURL=app.inventory.js.map
+//# sourceMappingURL=inventory.component.js.map

@@ -5,4 +5,4 @@ var Coffee = (function () {
     return Coffee;
 }());
 exports.Coffee = Coffee;
-//# sourceMappingURL=app.coffee.js.map
+//# sourceMappingURL=coffee.component.js.map
