@@ -1,21 +1,20 @@
 import {Component} from '@angular/core';
-import {Coffee} from '../coffee/coffee.component'
-
+import {Coffee} from '../coffee/coffee.component';
+import {InventoryService} from './inventory.service';
 @Component({
     selector: 'inventory',
-    templateUrl: 'app/inventory/inventory.component.html'
+    templateUrl: 'app/inventory/inventory.component.html',
+    providers: [InventoryService]
 })
 
 export class Inventory {
      title = "Current Inventory";
      coffees: Coffee[]
 
+     constructor(private _inventoryService: InventoryService) { }
 
      ngOnInit() {
-        this.coffees = [
-            {name: 'Toasted Southern Pecan', roaster: 'The Grind', roast: 'light', amount: 5},
-            {name: 'Toasted Southern Pecan', roaster: 'The Grind', roast: 'light', amount: 5}
-        ]
+        this.coffees = this._inventoryService.getCoffees();
      }
 
      expandInventory() {
