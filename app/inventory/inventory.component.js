@@ -16,10 +16,11 @@ var Inventory = (function () {
         this.title = "Current Inventory";
     }
     Inventory.prototype.ngOnInit = function () {
-        this.coffees = this._inventoryService.getCoffees();
+        var _this = this;
+        this._inventoryService.getCoffees().subscribe(function (coffees) { _this.coffees = coffees; console.log('POTATOES', _this.coffees); }, function (error) { return _this.errorMessage = error; });
     };
     Inventory.prototype.expandInventory = function () {
-        this.coffees.push({ name: '', roaster: '', roast: '', amount: 0 });
+        //      this.coffees.push({name: '', roaster: '', roast: '', amount: 0});
     };
     return Inventory;
 }());
