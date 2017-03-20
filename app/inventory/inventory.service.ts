@@ -9,7 +9,7 @@ import {Coffee} from '../coffee/coffee.component';
 
 @Injectable()
 export class InventoryService {
-    private coffeesUrl = 'http://localhost:28799/CoffeeRest.svc/coffees/all';
+    private coffeesUrl = 'http://localhost:28799/CoffeeRest.svc/coffees';
 
     constructor(private http: Http) {}
 

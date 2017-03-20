@@ -16,7 +16,7 @@ require("rxjs/add/operator/map");
 var InventoryService = (function () {
     function InventoryService(http) {
         this.http = http;
-        this.coffeesUrl = 'http://localhost:28799/CoffeeRest.svc/coffees/all';
+        this.coffeesUrl = 'http://localhost:28799/CoffeeRest.svc/coffees';
     }
     InventoryService.prototype.getCoffees = function () {
         return this.http.get(this.coffeesUrl).map(this.extractData).catch(this.handleError);
