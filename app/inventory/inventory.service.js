@@ -13,13 +13,24 @@ var http_1 = require("@angular/http");
 var Observable_1 = require("rxjs/Observable");
 require("rxjs/add/operator/catch");
 require("rxjs/add/operator/map");
+require("rxjs/add/operator/toPromise");
 var InventoryService = (function () {
     function InventoryService(http) {
         this.http = http;
-        this.coffeesUrl = 'http://localhost:28799/CoffeeRest.svc/coffees';
+        this.coffeesUrl = 'http://localhost/CoffeeData/CoffeeRest.svc/coffees';
+        this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
     }
     InventoryService.prototype.getCoffees = function () {
         return this.http.get(this.coffeesUrl).map(this.extractData).catch(this.handleError);
+    };
+    InventoryService.prototype.update = function (coffee) {
+        var coffeeOne = { "coffee": coffee };
+        console.log(coffeeOne);
+        return this.http
+            .put(this.coffeesUrl, coffeeOne, { headers: this.headers })
+            .toPromise()
+            .then(function () { return coffee; })
+            .catch(this.handleError);
     };
     InventoryService.prototype.extractData = function (res) {
         var body = res.json();

@@ -1,20 +1,32 @@
 import {Injectable} from '@angular/core';
-import {Http, Response} from '@angular/http';
+import {Http, Response, Headers} from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/toPromise';
 
 import {Coffee} from '../coffee/coffee.component';
 
 @Injectable()
 export class InventoryService {
-    private coffeesUrl = 'http://localhost:28799/CoffeeRest.svc/coffees';
+    private coffeesUrl = 'http://localhost/CoffeeData/CoffeeRest.svc/coffees';
+    private headers = new Headers({'Content-Type': 'application/json'});
 
     constructor(private http: Http) {}
 
     getCoffees(): Observable<Coffee[]>{
         return this.http.get(this.coffeesUrl).map(this.extractData).catch(this.handleError);
+    }
+
+    update(coffee: Coffee): Promise<Coffee> {
+        var coffeeOne = {"coffee": coffee}
+        console.log(coffeeOne);
+        return this.http
+          .put(this.coffeesUrl, coffeeOne, {headers: this.headers})
+          .toPromise()
+          .then(() => coffee)
+          .catch(this.handleError);
     }
 
     private extractData(res: Response) {

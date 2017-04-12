@@ -22,6 +22,9 @@ var Inventory = (function () {
     Inventory.prototype.expandInventory = function () {
         //      this.coffees.push({name: '', roaster: '', roast: '', amount: 0});
     };
+    Inventory.prototype.updateCoffee = function (coffee) {
+        this._inventoryService.update(coffee);
+    };
     return Inventory;
 }());
 Inventory = __decorate([

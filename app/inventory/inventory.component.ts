@@ -22,4 +22,8 @@ export class Inventory {
       expandInventory() {
     //      this.coffees.push({name: '', roaster: '', roast: '', amount: 0});
       }
+
+      updateCoffee(coffee: Coffee) {
+        this._inventoryService.update(coffee);
+      }
 }
