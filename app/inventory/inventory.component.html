@@ -6,10 +6,10 @@
         <th>Name</th><th>Roaster</th><th>Roast</th><th>Amount</th>
     </tr>
     <tr *ngFor="let currentCoffee of coffees">
-        <td><input [(value)]=currentCoffee.name/></td>
-        <td><input [(value)]=currentCoffee.roaster/></td>
-        <td><input [(value)]=currentCoffee.roast/></td>
-        <td><input [(value)]=currentCoffee.amount/></td>
+        <td><input [(ngModel)]=currentCoffee.name/></td>
+        <td><input [(ngModel)]=currentCoffee.roaster/></td>
+        <td><input [(ngModel)]=currentCoffee.roast/></td>
+        <td><input [(ngModel)]=currentCoffee.amount/></td>
         <td><button (click)="updateCoffee(currentCoffee)">Save</button></td>
     </tr>    
 </table>
