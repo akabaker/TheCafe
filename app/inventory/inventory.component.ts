@@ -1,29 +1,28 @@
 import {Component} from '@angular/core';
 import {Coffee} from '../coffee/coffee.component';
 import {InventoryService} from './inventory.service';
+import {CoffeeList} from '../coffee/coffeelist';
 @Component({
     selector: 'inventory',
     templateUrl: 'app/inventory/inventory.component.html',
-    providers: [InventoryService]
+    providers: [CoffeeList, InventoryService]
 })
 
 export class Inventory {
      title = "Current Inventory";
-     coffees: Coffee[];
      errorMessage: string;
 
-     constructor(private _inventoryService: InventoryService) { }
+     constructor(public coffeeList : CoffeeList) { }
 
      ngOnInit() {
-        this._inventoryService.getCoffees().subscribe(coffees => {this.coffees = coffees; console.log('POTATOES', this.coffees)}, error => this.errorMessage = <any>error);
+        this.coffeeList.ngOnInit();
+      }
 
-     }
-
-      expandInventory() {
-    //      this.coffees.push({name: '', roaster: '', roast: '', amount: 0});
+      addCoffee(coffee: Coffee) {
+        
       }
 
       updateCoffee(coffee: Coffee) {
-        this._inventoryService.update(coffee);
+        //this._coffeeList.updateCoffee(coffee);
       }
 }
