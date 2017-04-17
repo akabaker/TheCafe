@@ -10,19 +10,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var inventory_service_1 = require("./inventory.service");
-var coffeelist_1 = require("../coffee/coffeelist");
 var Inventory = (function () {
-    function Inventory(coffeeList) {
-        this.coffeeList = coffeeList;
+    function Inventory(_inventoryService) {
+        this._inventoryService = _inventoryService;
         this.title = "Current Inventory";
     }
     Inventory.prototype.ngOnInit = function () {
-        this.coffeeList.ngOnInit();
+        var _this = this;
+        this.showAdd = false;
+        this._inventoryService.getCoffees().subscribe(function (coffees) { _this.coffees = coffees; });
     };
     Inventory.prototype.addCoffee = function (coffee) {
+        var _this = this;
+        this._inventoryService.add(coffee).then(function (coffee) { return _this.coffees.push(coffee); });
     };
     Inventory.prototype.updateCoffee = function (coffee) {
-        //this._coffeeList.updateCoffee(coffee);
+        this._inventoryService.update(coffee);
+    };
+    Inventory.prototype.expandInventory = function () {
+        this.showAdd = true;
     };
     return Inventory;
 }());
@@ -30,9 +36,9 @@ Inventory = __decorate([
     core_1.Component({
         selector: 'inventory',
         templateUrl: 'app/inventory/inventory.component.html',
-        providers: [coffeelist_1.CoffeeList, inventory_service_1.InventoryService]
+        providers: [inventory_service_1.InventoryService]
     }),
-    __metadata("design:paramtypes", [coffeelist_1.CoffeeList])
+    __metadata("design:paramtypes", [inventory_service_1.InventoryService])
 ], Inventory);
 exports.Inventory = Inventory;
 //# sourceMappingURL=inventory.component.js.map

@@ -29,6 +29,15 @@ export class InventoryService {
           .catch(this.handleError);
     }
 
+    add(coffee: Coffee): Promise<Coffee> {
+        var coffeeOne = {"coffee": coffee};
+        return this.http
+          .post(this.coffeesUrl, coffeeOne, {headers: this.headers})
+          .toPromise()
+          .then(() => coffee)
+          .catch(this.handleError)
+    }
+
     private extractData(res: Response) {
       let body = res.json();
       console.log('body', body);

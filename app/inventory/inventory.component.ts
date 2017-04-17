@@ -1,28 +1,35 @@
 import {Component} from '@angular/core';
 import {Coffee} from '../coffee/coffee.component';
 import {InventoryService} from './inventory.service';
-import {CoffeeList} from '../coffee/coffeelist';
+
 @Component({
     selector: 'inventory',
     templateUrl: 'app/inventory/inventory.component.html',
-    providers: [CoffeeList, InventoryService]
+    providers: [InventoryService]
 })
 
 export class Inventory {
      title = "Current Inventory";
+     coffees : Coffee[];
+     showAdd : boolean;
      errorMessage: string;
 
-     constructor(public coffeeList : CoffeeList) { }
+     constructor(private _inventoryService: InventoryService) { }
 
      ngOnInit() {
-        this.coffeeList.ngOnInit();
+       this.showAdd = false;
+        this._inventoryService.getCoffees().subscribe(coffees => {this.coffees = coffees});
       }
 
       addCoffee(coffee: Coffee) {
-        
+        this._inventoryService.add(coffee).then(coffee => this.coffees.push(coffee));
       }
 
       updateCoffee(coffee: Coffee) {
-        //this._coffeeList.updateCoffee(coffee);
+        this._inventoryService.update(coffee);
+      }
+
+      expandInventory() {
+        this.showAdd = true;
       }
 }

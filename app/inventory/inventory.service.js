@@ -32,6 +32,14 @@ var InventoryService = (function () {
             .then(function () { return coffee; })
             .catch(this.handleError);
     };
+    InventoryService.prototype.add = function (coffee) {
+        var coffeeOne = { "coffee": coffee };
+        return this.http
+            .post(this.coffeesUrl, coffeeOne, { headers: this.headers })
+            .toPromise()
+            .then(function () { return coffee; })
+            .catch(this.handleError);
+    };
     InventoryService.prototype.extractData = function (res) {
         var body = res.json();
         console.log('body', body);
