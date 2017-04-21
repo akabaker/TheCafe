@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var coffee_component_1 = require("../coffee/coffee.component");
 var inventory_service_1 = require("./inventory.service");
 var Inventory = (function () {
     function Inventory(_inventoryService) {
@@ -19,16 +20,25 @@ var Inventory = (function () {
         var _this = this;
         this.showAdd = false;
         this._inventoryService.getCoffees().subscribe(function (coffees) { _this.coffees = coffees; });
+        this.newCoffee = new coffee_component_1.Coffee;
     };
     Inventory.prototype.addCoffee = function (coffee) {
         var _this = this;
         this._inventoryService.add(coffee).then(function (coffee) { return _this.coffees.push(coffee); });
+        this.showAdd = false;
+        this.newCoffee;
     };
     Inventory.prototype.updateCoffee = function (coffee) {
         this._inventoryService.update(coffee);
     };
-    Inventory.prototype.expandInventory = function () {
-        this.showAdd = true;
+    Inventory.prototype.deleteCoffee = function (coffee) {
+        var _this = this;
+        console.log(coffee);
+        this._inventoryService.delete(coffee).then(function () { return _this.coffees.splice(_this.coffees.indexOf(coffee), 1); });
+    };
+    Inventory.prototype.cancelAdd = function () {
+        this.newCoffee = new coffee_component_1.Coffee;
+        this.showAdd = false;
     };
     return Inventory;
 }());

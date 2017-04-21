@@ -1,9 +1,14 @@
 <h1>{{title}}</h1>
 
 <div *ngIf="showAdd">
-    
+    <input [(ngModel)]=newCoffee.name placeholder="Name"/>
+    <input [(ngModel)]=newCoffee.roaster placeholder="Roaster"/>
+    <input [(ngModel)]=newCoffee.roast placeholder="Roast"/>
+    <input [(ngModel)]=newCoffee.amount placeholder="Amount"/>
+    <button (click)="addCoffee(newCoffee)">Add</button>
+    <button (click)="cancelAdd()">Cancel</button>
 </div>
-<button (click)="showAdd = true">Add Coffee</button>
+<button *ngIf="!showAdd" (click)="showAdd = true">Add Coffee</button>
 <table>
     <tr>
         <th>Name</th><th>Roaster</th><th>Roast</th><th>Amount</th>
@@ -13,6 +18,8 @@
         <td><input [(ngModel)]=currentCoffee.roaster/></td>
         <td><input [(ngModel)]=currentCoffee.roast/></td>
         <td><input [(ngModel)]=currentCoffee.amount/></td>
+        {{currentCoffee.id}}
         <td><button (click)="updateCoffee(currentCoffee)">Save</button></td>
+        <td><button (click)="deleteCoffee(currentCoffee)">Delete</button></td>
     </tr>    
 </table>

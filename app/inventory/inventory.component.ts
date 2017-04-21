@@ -13,23 +13,33 @@ export class Inventory {
      coffees : Coffee[];
      showAdd : boolean;
      errorMessage: string;
+     newCoffee: Coffee;
 
      constructor(private _inventoryService: InventoryService) { }
 
      ngOnInit() {
        this.showAdd = false;
         this._inventoryService.getCoffees().subscribe(coffees => {this.coffees = coffees});
+        this.newCoffee = new Coffee;
       }
 
       addCoffee(coffee: Coffee) {
         this._inventoryService.add(coffee).then(coffee => this.coffees.push(coffee));
+        this.showAdd = false;
+        this.newCoffee;
       }
 
       updateCoffee(coffee: Coffee) {
         this._inventoryService.update(coffee);
       }
 
-      expandInventory() {
-        this.showAdd = true;
+      deleteCoffee(coffee: Coffee) {
+        console.log(coffee);
+        this._inventoryService.delete(coffee).then(() => this.coffees.splice(this.coffees.indexOf(coffee), 1));
+      }
+
+      cancelAdd() {
+        this.newCoffee = new Coffee;
+        this.showAdd = false;
       }
 }

@@ -36,6 +36,15 @@ var InventoryService = (function () {
         var coffeeOne = { "coffee": coffee };
         return this.http
             .post(this.coffeesUrl, coffeeOne, { headers: this.headers })
+            .map(function (res) { console.log(res.json()); coffee = res.json().AddCoffeeResult; })
+            .toPromise()
+            .then(function () { return coffee; })
+            .catch(this.handleError);
+    };
+    InventoryService.prototype.delete = function (coffee) {
+        var coffeeOne = { "coffee": coffee };
+        return this.http
+            .delete(this.coffeesUrl + "/" + coffee.id)
             .toPromise()
             .then(function () { return coffee; })
             .catch(this.handleError);

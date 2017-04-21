@@ -33,9 +33,19 @@ export class InventoryService {
         var coffeeOne = {"coffee": coffee};
         return this.http
           .post(this.coffeesUrl, coffeeOne, {headers: this.headers})
+          .map(res => {console.log(res.json()); coffee = res.json().AddCoffeeResult;})
           .toPromise()
           .then(() => coffee)
           .catch(this.handleError)
+    }
+
+    delete(coffee: Coffee): Promise<Coffee> {
+        var coffeeOne = {"coffee": coffee};
+        return this.http
+          .delete(this.coffeesUrl + "/" + coffee.id)
+          .toPromise()
+          .then(() => coffee)
+          .catch(this.handleError);
     }
 
     private extractData(res: Response) {
