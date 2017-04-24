@@ -5,7 +5,8 @@ import {InventoryService} from './inventory.service';
 @Component({
     selector: 'inventory',
     templateUrl: 'app/inventory/inventory.component.html',
-    providers: [InventoryService]
+    providers: [InventoryService],
+    styleUrls: ['app/content/bootstrap/css/bootstrap-responsive.min.css', 'app/content/bootstrap/css/bootstrap.min.css']   
 })
 
 export class Inventory {
@@ -26,7 +27,7 @@ export class Inventory {
       addCoffee(coffee: Coffee) {
         this._inventoryService.add(coffee).then(coffee => this.coffees.push(coffee));
         this.showAdd = false;
-        this.newCoffee;
+        this.newCoffee = new Coffee;
       }
 
       updateCoffee(coffee: Coffee) {

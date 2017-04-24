@@ -26,7 +26,7 @@ var Inventory = (function () {
         var _this = this;
         this._inventoryService.add(coffee).then(function (coffee) { return _this.coffees.push(coffee); });
         this.showAdd = false;
-        this.newCoffee;
+        this.newCoffee = new coffee_component_1.Coffee;
     };
     Inventory.prototype.updateCoffee = function (coffee) {
         this._inventoryService.update(coffee);
@@ -46,7 +46,8 @@ Inventory = __decorate([
     core_1.Component({
         selector: 'inventory',
         templateUrl: 'app/inventory/inventory.component.html',
-        providers: [inventory_service_1.InventoryService]
+        providers: [inventory_service_1.InventoryService],
+        styleUrls: ['app/content/bootstrap/css/bootstrap-responsive.min.css', 'app/content/bootstrap/css/bootstrap.min.css']
     }),
     __metadata("design:paramtypes", [inventory_service_1.InventoryService])
 ], Inventory);
