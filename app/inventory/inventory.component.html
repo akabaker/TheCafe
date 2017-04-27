@@ -9,26 +9,9 @@
     <button (click)="cancelAdd()">Cancel</button>
 </div>
 <button *ngIf="!showAdd" (click)="showAdd = true">Add Coffee</button>
-<!-- <table>
-    <tr>
-        <th>Name</th><th>Roaster</th><th>Roast</th><th>Amount</th>
-    </tr>
-    <tr *ngFor="let currentCoffee of coffees">
-        <td>
-            <input *ngIf="currentCoffee.edit" [(ngModel)]=currentCoffee.coffee.name/>
-            <span *ngIf="!currentCoffee.edit">{{currentCoffee.coffee.name}}</span>
-        </td>
-        <td><input [(ngModel)]=currentCoffee.coffee.roaster/></td>
-        <td><input [(ngModel)]=currentCoffee.coffee.roast/></td>
-        <td><input [(ngModel)]=currentCoffee.coffee.amount/></td>
-        <td><button (click)="currentCoffee.edit = true">Edit</button></td>
-        <td><button (click)="updateCoffee(currentCoffee.coffee)">Save</button></td>
-        <td><button (click)="deleteCoffee(currentCoffee.coffee)">Delete</button></td>
-    </tr>    
-</table> -->
 <br/>
 <div *ngFor="let currentCoffee of coffees">
-    <div *ngIf="currentCoffee.edit" class="edit-div">
+    <div *ngIf="currentCoffee.edit" class="edit-div row">
         <div><input [(ngModel)]=currentCoffee.coffee.name/></div>
         <div><input [(ngModel)]=currentCoffee.coffee.roaster/></div>
         <div><input [(ngModel)]=currentCoffee.coffee.roast/></div>
@@ -37,7 +20,7 @@
         <div><button (click)="updateCoffee(currentCoffee)">Save</button></div>
         <div><button (click)="deleteCoffee(currentCoffee)">Delete</button></div>
     </div>
-    <div *ngIf="!currentCoffee.edit" class="display-div">
+    <div *ngIf="!currentCoffee.edit" class="display-div row">
         <div>{{currentCoffee.coffee.name}}</div>
         <div>{{currentCoffee.coffee.roaster}}</div>
         <div>{{currentCoffee.coffee.roast}}</div>

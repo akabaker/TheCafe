@@ -6,8 +6,7 @@ import {InventoryService} from './inventory.service';
 @Component({
     selector: 'inventory',
     templateUrl: 'app/inventory/inventory.component.html',
-    providers: [InventoryService],
-    styleUrls: ['app/content/bootstrap/css/bootstrap-responsive.min.css', 'app/content/bootstrap/css/bootstrap.min.css']   
+    providers: [InventoryService]
 })
 
 export class Inventory {

@@ -64,8 +64,7 @@ Inventory = __decorate([
     core_1.Component({
         selector: 'inventory',
         templateUrl: 'app/inventory/inventory.component.html',
-        providers: [inventory_service_1.InventoryService],
-        styleUrls: ['app/content/bootstrap/css/bootstrap-responsive.min.css', 'app/content/bootstrap/css/bootstrap.min.css']
+        providers: [inventory_service_1.InventoryService]
     }),
     __metadata("design:paramtypes", [inventory_service_1.InventoryService])
 ], Inventory);

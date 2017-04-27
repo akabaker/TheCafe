@@ -12,6 +12,6 @@ import { HttpModule, JsonpModule } from '@angular/http';
                   JsonpModule
                   ],
   declarations: [AppComponent, Inventory],
-  bootstrap:    [AppComponent]
+  bootstrap:    [AppComponent],
 })
 export class AppModule { }
