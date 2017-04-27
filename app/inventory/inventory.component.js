@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var coffee_component_1 = require("../coffee/coffee.component");
+var editable_coffee_1 = require("../coffee/editable.coffee");
 var inventory_service_1 = require("./inventory.service");
 var Inventory = (function () {
     function Inventory(_inventoryService) {
@@ -19,26 +20,43 @@ var Inventory = (function () {
     Inventory.prototype.ngOnInit = function () {
         var _this = this;
         this.showAdd = false;
-        this._inventoryService.getCoffees().subscribe(function (coffees) { _this.coffees = coffees; });
+        this._inventoryService.getCoffees().subscribe(function (coffees) { _this.coffees = _this.mapToEditArray(coffees); });
         this.newCoffee = new coffee_component_1.Coffee;
     };
     Inventory.prototype.addCoffee = function (coffee) {
         var _this = this;
-        this._inventoryService.add(coffee).then(function (coffee) { return _this.coffees.push(coffee); });
+        this._inventoryService.add(coffee).then(function (coffee) { return _this.coffees.push(_this.mapToEdit(coffee)); });
         this.showAdd = false;
         this.newCoffee = new coffee_component_1.Coffee;
     };
-    Inventory.prototype.updateCoffee = function (coffee) {
-        this._inventoryService.update(coffee);
+    Inventory.prototype.updateCoffee = function (coffeeEdit) {
+        this._inventoryService.update(coffeeEdit.coffee);
+        coffeeEdit.edit = false;
     };
-    Inventory.prototype.deleteCoffee = function (coffee) {
+    Inventory.prototype.deleteCoffee = function (coffeeEdit) {
         var _this = this;
-        console.log(coffee);
-        this._inventoryService.delete(coffee).then(function () { return _this.coffees.splice(_this.coffees.indexOf(coffee), 1); });
+        //console.log(coffee);
+        this._inventoryService.delete(coffeeEdit.coffee).then(function () { return _this.coffees.splice(_this.coffees.indexOf(coffeeEdit), 1); });
     };
     Inventory.prototype.cancelAdd = function () {
         this.newCoffee = new coffee_component_1.Coffee;
         this.showAdd = false;
+    };
+    Inventory.prototype.mapToEditArray = function (coffees) {
+        var editList = new Array();
+        coffees.forEach(function (coffee) {
+            var editCoffee = new editable_coffee_1.CoffeeEdit;
+            editCoffee.edit = false;
+            editCoffee.coffee = coffee;
+            editList.push(editCoffee);
+        });
+        return editList;
+    };
+    Inventory.prototype.mapToEdit = function (coffee) {
+        var editCoffee = new editable_coffee_1.CoffeeEdit;
+        editCoffee.edit = false;
+        editCoffee.coffee = coffee;
+        return editCoffee;
     };
     return Inventory;
 }());
