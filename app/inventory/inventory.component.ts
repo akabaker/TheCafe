@@ -11,7 +11,7 @@ import {InventoryService} from './inventory.service';
 
 export class Inventory {
      title = "Current Inventory";
-     coffees : CoffeeEdit[];
+     coffees : Coffee[];
      showAdd : boolean;
      errorMessage: string;
      newCoffee: Coffee;
@@ -20,50 +20,27 @@ export class Inventory {
 
      ngOnInit() {
        this.showAdd = false;
-        this._inventoryService.getCoffees().subscribe(coffees => {this.coffees = this.mapToEditArray(coffees)});
+        this._inventoryService.getCoffees().subscribe(coffees => this.coffees = coffees);
         this.newCoffee = new Coffee;
       }
 
       addCoffee(coffee: Coffee) {
-        this._inventoryService.add(coffee).then(coffee => this.coffees.push(this.mapToEdit(coffee)));
+        this._inventoryService.add(coffee).then(coffee => this.coffees.push(coffee));
         this.showAdd = false;
         this.newCoffee = new Coffee;
       }
 
-      updateCoffee(coffeeEdit: CoffeeEdit) {
-        this._inventoryService.update(coffeeEdit.coffee);
-        coffeeEdit.edit = false;
+      updateCoffee(coffee: Coffee) {
+        this._inventoryService.update(coffee);
       }
 
-      deleteCoffee(coffeeEdit: CoffeeEdit) {
+      deleteCoffee(coffee: Coffee) {
         //console.log(coffee);
-        this._inventoryService.delete(coffeeEdit.coffee).then(() => this.coffees.splice(this.coffees.indexOf(coffeeEdit), 1));
+        this._inventoryService.delete(coffee).then(() => this.coffees.splice(this.coffees.indexOf(coffee), 1));
       }
 
       cancelAdd() {
         this.newCoffee = new Coffee;
         this.showAdd = false;
-      }
-
-      mapToEditArray(coffees : Coffee[]) : CoffeeEdit[] {
-        var editList = new Array<CoffeeEdit>();
-
-        coffees.forEach(function(coffee) 
-        {
-          var editCoffee = new CoffeeEdit;
-          editCoffee.edit = false;
-          editCoffee.coffee = coffee;
-          editList.push(editCoffee);
-        });
-
-        return editList;
-      }
-
-      mapToEdit(coffee: Coffee) : CoffeeEdit {
-        var editCoffee = new CoffeeEdit
-        editCoffee.edit = false;
-        editCoffee.coffee = coffee;
-
-        return editCoffee;
       }
 }

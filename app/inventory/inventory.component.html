@@ -10,21 +10,13 @@
 </div>
 <button *ngIf="!showAdd" (click)="showAdd = true">Add Coffee</button>
 <br/>
-<div *ngFor="let currentCoffee of coffees">
-    <div *ngIf="currentCoffee.edit" class="edit-div row">
-        <div><input [(ngModel)]=currentCoffee.coffee.name/></div>
-        <div><input [(ngModel)]=currentCoffee.coffee.roaster/></div>
-        <div><input [(ngModel)]=currentCoffee.coffee.roast/></div>
-        <div><input [(ngModel)]=currentCoffee.coffee.amount/></div>
-        <div><button (click)="currentCoffee.edit = false">Cancel</button></div>
-        <div><button (click)="updateCoffee(currentCoffee)">Save</button></div>
-        <div><button (click)="deleteCoffee(currentCoffee)">Delete</button></div>
+<div class="containter" style="padding: 0 0 100px 100px;">
+    <div class="row">
+        <div *ngFor="let currentCoffee of coffees" class="card">
+                <div><input [(ngModel)]=currentCoffee.name/></div>
+                <div><input [(ngModel)]=currentCoffee.roaster/></div>
+                <div><input [(ngModel)]=currentCoffee.roast/></div>
+                <div><input [(ngModel)]=currentCoffee.amount/></div>
+        </div>
     </div>
-    <div *ngIf="!currentCoffee.edit" class="display-div row">
-        <div>{{currentCoffee.coffee.name}}</div>
-        <div>{{currentCoffee.coffee.roaster}}</div>
-        <div>{{currentCoffee.coffee.roast}}</div>
-        <div>{{currentCoffee.coffee.amount}}</div>
-        <div><button (click)="currentCoffee.edit = true">Edit</button></div>
-    </div>    
 </div>
