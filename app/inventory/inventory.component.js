@@ -19,12 +19,13 @@ var Inventory = (function () {
     Inventory.prototype.ngOnInit = function () {
         var _this = this;
         this.showAdd = false;
-        this._inventoryService.getCoffees().subscribe(function (coffees) { return _this.coffees = coffees; });
+        this._inventoryService.getCoffees().subscribe(function (coffees) { return _this.coffees = _this.filteredCoffees = coffees; });
         this.newCoffee = new coffee_component_1.Coffee;
+        this.filter = '';
     };
     Inventory.prototype.addCoffee = function (coffee) {
         var _this = this;
-        this._inventoryService.add(coffee).then(function (coffee) { return _this.coffees.push(coffee); });
+        this._inventoryService.add(coffee).then(function (coffee) { _this.coffees.push(coffee); _this.filter = ''; });
         this.showAdd = false;
         this.newCoffee = new coffee_component_1.Coffee;
     };

@@ -12,3 +12,31 @@ h2, h3 {
 body {
   margin: 2em;
 }
+
+.pane-title {
+  text-align: center;
+  font-size: 22px;
+  font-family: sans-serif
+}
+
+.pane-subtitle {
+  text-align: center;
+  font-size: 16px;
+  font-style: italic;
+}
+
+.pane-details {
+  vertical-align: bottom;
+}
+
+.search {
+  float: right;
+}
+
+.coffee-pane {
+  background-color: lightgreen;
+  border-width: 1px;
+  box-shadow: 3px 3px 3px lightslategray;
+  border-radius: 2px;
+  margin: 4px;
+}

@@ -1,22 +1,32 @@
 <h1>{{title}}</h1>
 
-<div *ngIf="showAdd">
-    <input [(ngModel)]=newCoffee.name placeholder="Name"/>
-    <input [(ngModel)]=newCoffee.roaster placeholder="Roaster"/>
-    <input [(ngModel)]=newCoffee.roast placeholder="Roast"/>
-    <input [(ngModel)]=newCoffee.amount placeholder="Amount"/>
-    <button (click)="addCoffee(newCoffee)">Add</button>
-    <button (click)="cancelAdd()">Cancel</button>
-</div>
-<button *ngIf="!showAdd" (click)="showAdd = true">Add Coffee</button>
-<br/>
-<div class="containter" style="padding: 0 0 100px 100px;">
-    <div class="row">
-        <div *ngFor="let currentCoffee of coffees" class="card">
-                <div><input [(ngModel)]=currentCoffee.name/></div>
-                <div><input [(ngModel)]=currentCoffee.roaster/></div>
-                <div><input [(ngModel)]=currentCoffee.roast/></div>
-                <div><input [(ngModel)]=currentCoffee.amount/></div>
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div *ngIf="showAdd">
+                    <input [(ngModel)]=newCoffee.name placeholder="Name"/>
+                    <input [(ngModel)]=newCoffee.roaster placeholder="Roaster"/>
+                    <input [(ngModel)]=newCoffee.roast placeholder="Roast"/>
+                    <input type="number" [(ngModel)]=newCoffee.amount placeholder="Amount"/>
+                    <button (click)="addCoffee(newCoffee)">Add</button>
+                    <button (click)="cancelAdd()">Cancel</button>
+                </div>
+                <button *ngIf="!showAdd" (click)="showAdd = true">Add Coffee</button>
+            </div>
+            <div class="col-md-6">
+                <input class="search" type="search" placeholder="Search" [(ngModel)]="filter"/>
+            </div>            
+        </div>
+        <div class="row">
+            <div *ngFor="let currentCoffee of coffees | coffeefilter:filter" class="col-md-2 coffee-pane">
+                    <div class="pane-title">{{currentCoffee.name}}</div>
+                    <div class="pane-subtitle">{{currentCoffee.roaster}}</div>
+                    <div class="row pane-details">
+                        <div class="col-md-6">{{currentCoffee.roast}}</div>
+                        <div class="col-md-6 text-right">{{currentCoffee.amount}} oz.</div>
+                    </div> 
+            </div>
         </div>
     </div>
 </div>
