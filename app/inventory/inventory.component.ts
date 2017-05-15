@@ -37,8 +37,11 @@ export class Inventory {
       }
 
       deleteCoffee(coffee: Coffee) {
-        //console.log(coffee);
-        this._inventoryService.delete(coffee).then(() => this.coffees.splice(this.coffees.indexOf(coffee), 1));
+        var confirmDelete = confirm("Are you sure you want to delete this coffee?")
+        
+        if (confirmDelete) {        
+          this._inventoryService.delete(coffee).then(() => this.coffees.splice(this.coffees.indexOf(coffee), 1));
+        }
       }
 
       cancelAdd() {

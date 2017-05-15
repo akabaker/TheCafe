@@ -34,8 +34,10 @@ var Inventory = (function () {
     };
     Inventory.prototype.deleteCoffee = function (coffee) {
         var _this = this;
-        //console.log(coffee);
-        this._inventoryService.delete(coffee).then(function () { return _this.coffees.splice(_this.coffees.indexOf(coffee), 1); });
+        var confirmDelete = confirm("Are you sure you want to delete this coffee?");
+        if (confirmDelete) {
+            this._inventoryService.delete(coffee).then(function () { return _this.coffees.splice(_this.coffees.indexOf(coffee), 1); });
+        }
     };
     Inventory.prototype.cancelAdd = function () {
         this.newCoffee = new coffee_component_1.Coffee;

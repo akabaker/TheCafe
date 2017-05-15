@@ -4,4 +4,5 @@
      roaster: string;
      roast: string;
      amount: number;
+     showEdit: boolean;
  }

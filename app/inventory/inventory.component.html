@@ -19,13 +19,21 @@
             </div>            
         </div>
         <div class="row">
-            <div *ngFor="let currentCoffee of coffees | coffeefilter:filter" class="col-md-2 coffee-pane">
+            <div *ngFor="let currentCoffee of coffees | coffeefilter:filter" class="col-md-2 coffee-pane" (mouseenter)="currentCoffee.showEdit = true" (mouseleave)="currentCoffee.showEdit = false">
                     <div class="pane-title">{{currentCoffee.name}}</div>
                     <div class="pane-subtitle">{{currentCoffee.roaster}}</div>
                     <div class="row pane-details">
                         <div class="col-md-6">{{currentCoffee.roast}}</div>
                         <div class="col-md-6 text-right">{{currentCoffee.amount}} oz.</div>
                     </div> 
+                    <div *ngIf="currentCoffee.showEdit" class="row edit-options">
+                        <div class="col-md-6">
+                            <button>Edit</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button (click)="deleteCoffee(currentCoffee)">Delete</button>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
