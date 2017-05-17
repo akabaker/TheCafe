@@ -49,6 +49,21 @@ export class Inventory {
         this.showAdd = false;
       }
 
+      goToEdit(coffee: Coffee) {
+        coffee.editMode = true;
+        var containingDiv = $("#coffee_" + coffee.id);
+        containingDiv.removeClass("col-md-2");
+        containingDiv.addClass("col-md-6");
+      }
+
+      goToDisplay(coffee: Coffee) {
+        coffee.editMode = false;
+        coffee.showOptions = false;
+         var containingDiv = $("#coffee_" + coffee.id);
+        containingDiv.removeClass("col-md-6");
+        containingDiv.addClass("col-md-2");
+      }
+
       // applyFilter() {
       //   if (this.filter != '') {
       //     var lowerFilter = this.filter.toLowerCase();

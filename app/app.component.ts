@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import $ = require("jquery");
 
 @Component({
     selector: 'my-app',

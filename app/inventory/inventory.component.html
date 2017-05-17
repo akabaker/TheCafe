@@ -15,25 +15,35 @@
                 <button *ngIf="!showAdd" (click)="showAdd = true">Add Coffee</button>
             </div>
             <div class="col-md-6">
-                <input class="search" type="search" placeholder="Search" [(ngModel)]="filter"/>
+                <input class="search" type="search" placeholder="Filter ;)" [(ngModel)]="filter"/>
             </div>            
         </div>
         <div class="row">
-            <div *ngFor="let currentCoffee of coffees | coffeefilter:filter" class="col-md-2 coffee-pane" (mouseenter)="currentCoffee.showEdit = true" (mouseleave)="currentCoffee.showEdit = false">
+            <div *ngFor="let currentCoffee of coffees | coffeefilter:filter" class="col-md-2 coffee-pane" [id]="'coffee_' + currentCoffee.id">
+                <div *ngIf="!currentCoffee.editMode" class="display-pane" (mouseenter)="currentCoffee.showOptions = true" (mouseleave)="currentCoffee.showOptions = false">
                     <div class="pane-title">{{currentCoffee.name}}</div>
                     <div class="pane-subtitle">{{currentCoffee.roaster}}</div>
                     <div class="row pane-details">
                         <div class="col-md-6">{{currentCoffee.roast}}</div>
                         <div class="col-md-6 text-right">{{currentCoffee.amount}} oz.</div>
                     </div> 
-                    <div *ngIf="currentCoffee.showEdit" class="row edit-options">
+                    <div *ngIf="currentCoffee.showOptions" class="row edit-options">
                         <div class="col-md-6">
-                            <button>Edit</button>
+                            <button (click)="goToEdit(currentCoffee)">Edit</button>
                         </div>
                         <div class="col-md-6">
                             <button (click)="deleteCoffee(currentCoffee)">Delete</button>
                         </div>
                     </div>
+                </div>
+                <div *ngIf="currentCoffee.editMode" class="edit-pane">
+                    Do some edits<br/>
+                    <span>
+                        <label>Name: <input type="text" [(ngModel)]="currentCoffee.name" /> </label> 
+                    </span>
+                    <button (click)="goToDisplay(currentCoffee)">Cancel</button>
+                    <button>Save</button>
+                </div>
             </div>
         </div>
     </div>

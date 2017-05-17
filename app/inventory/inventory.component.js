@@ -43,6 +43,19 @@ var Inventory = (function () {
         this.newCoffee = new coffee_component_1.Coffee;
         this.showAdd = false;
     };
+    Inventory.prototype.goToEdit = function (coffee) {
+        coffee.editMode = true;
+        var containingDiv = $("#coffee_" + coffee.id);
+        containingDiv.removeClass("col-md-2");
+        containingDiv.addClass("col-md-6");
+    };
+    Inventory.prototype.goToDisplay = function (coffee) {
+        coffee.editMode = false;
+        coffee.showOptions = false;
+        var containingDiv = $("#coffee_" + coffee.id);
+        containingDiv.removeClass("col-md-6");
+        containingDiv.addClass("col-md-2");
+    };
     return Inventory;
 }());
 Inventory = __decorate([
