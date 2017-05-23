@@ -16,6 +16,7 @@ export class Inventory {
      newCoffee : Coffee;
      filteredCoffees : Coffee[];
      filter : string;
+     orderby : string;
 
      constructor(private _inventoryService: InventoryService) { }
 
@@ -34,6 +35,7 @@ export class Inventory {
 
       updateCoffee(coffee: Coffee) {
         this._inventoryService.update(coffee);
+        this.goToDisplay(coffee);
       }
 
       deleteCoffee(coffee: Coffee) {
@@ -63,13 +65,4 @@ export class Inventory {
         containingDiv.removeClass("col-md-6");
         containingDiv.addClass("col-md-2");
       }
-
-      // applyFilter() {
-      //   if (this.filter != '') {
-      //     var lowerFilter = this.filter.toLowerCase();
-      //     this.filteredCoffees = this.coffees.filter(coffee => coffee.name.toLowerCase().includes(lowerFilter) || coffee.roaster.toLowerCase().includes(lowerFilter) || coffee.roast.toLowerCase().includes(lowerFilter));
-      //   } else {
-      //     this.filteredCoffees = this.coffees;
-      //   }
-      //}
 }

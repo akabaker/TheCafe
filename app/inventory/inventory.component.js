@@ -31,6 +31,7 @@ var Inventory = (function () {
     };
     Inventory.prototype.updateCoffee = function (coffee) {
         this._inventoryService.update(coffee);
+        this.goToDisplay(coffee);
     };
     Inventory.prototype.deleteCoffee = function (coffee) {
         var _this = this;

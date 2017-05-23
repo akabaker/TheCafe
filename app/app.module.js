@@ -12,6 +12,7 @@ var inventory_component_1 = require("./inventory/inventory.component");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var coffee_filter_1 = require("./inventory/coffee.filter");
+var coffee_order_1 = require("./inventory/coffee.order");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -24,7 +25,7 @@ AppModule = __decorate([
             http_1.HttpModule,
             http_1.JsonpModule
         ],
-        declarations: [app_component_1.AppComponent, inventory_component_1.Inventory, coffee_filter_1.CoffeeFilter],
+        declarations: [app_component_1.AppComponent, inventory_component_1.Inventory, coffee_filter_1.CoffeeFilter, coffee_order_1.CoffeeOrder],
         bootstrap: [app_component_1.AppComponent],
     })
 ], AppModule);

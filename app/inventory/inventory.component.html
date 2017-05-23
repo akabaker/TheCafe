@@ -16,11 +16,12 @@
             </div>
             <div class="col-md-6">
                 <input class="search" type="search" placeholder="Filter ;)" [(ngModel)]="filter"/>
+                <input class="order-by" type="order" placeholder="OrderBy" [(ngModel)]="orderBy"/>
             </div>            
         </div>
         <div class="row">
-            <div *ngFor="let currentCoffee of coffees | coffeefilter:filter" class="col-md-2 coffee-pane" [id]="'coffee_' + currentCoffee.id">
-                <div *ngIf="!currentCoffee.editMode" class="display-pane" (mouseenter)="currentCoffee.showOptions = true" (mouseleave)="currentCoffee.showOptions = false">
+            <div *ngFor="let currentCoffee of coffees | coffeefilter:filter | coffeeorder:orderBy" class="col-md-2 coffee-pane" [id]="'coffee_' + currentCoffee.id" (mouseenter)="currentCoffee.showOptions = true" (mouseleave)="currentCoffee.showOptions = false">
+                <div *ngIf="!currentCoffee.editMode" class="display-pane">
                     <div class="pane-title">{{currentCoffee.name}}</div>
                     <div class="pane-subtitle">{{currentCoffee.roaster}}</div>
                     <div class="row pane-details">
@@ -36,13 +37,23 @@
                         </div>
                     </div>
                 </div>
-                <div *ngIf="currentCoffee.editMode" class="edit-pane">
-                    Do some edits<br/>
-                    <span>
-                        <label>Name: <input type="text" [(ngModel)]="currentCoffee.name" /> </label> 
-                    </span>
+                <div *ngIf="currentCoffee.editMode" class="edit-pane container">
+                    <div class="row" >
+                        <div class="col-s-12">
+                            <label>Name: <input type="text" [(ngModel)]="currentCoffee.name" /> </label> 
+                        </div>
+                        <div class="col-s-12">
+                            <label>Roaster: <input type="text" [(ngModel)]="currentCoffee.roaster" /> </label> 
+                        </div>
+                        <div class="col-s-12">
+                            <label>Roast: <input type="text" [(ngModel)]="currentCoffee.roast" /> </label> 
+                        </div>
+                        <div class="col-s-12">
+                            <label>Amount: <input type="number" [(ngModel)]="currentCoffee.amount" /> </label> 
+                        </div>
+                    </div>                    
                     <button (click)="goToDisplay(currentCoffee)">Cancel</button>
-                    <button>Save</button>
+                    <button (click)="updateCoffee(currentCoffee)">Save</button>
                 </div>
             </div>
         </div>
