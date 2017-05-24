@@ -14,10 +14,18 @@
                 </div>
                 <button *ngIf="!showAdd" (click)="showAdd = true">Add Coffee</button>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <input class="search" type="search" placeholder="Filter ;)" [(ngModel)]="filter"/>
-                <input class="order-by" type="order" placeholder="OrderBy" [(ngModel)]="orderBy"/>
-            </div>            
+            </div> 
+            <div class="col-md-3">
+                <label>Order 
+                <select [(ngModel)]="orderBy">
+                    <option value="name">Name</option>
+                    <option value="roaster">Roaster</option>
+                    <option value="roast">Roast</option>
+                </select>
+                </label>
+            </div>           
         </div>
         <div class="row">
             <div *ngFor="let currentCoffee of coffees | coffeefilter:filter | coffeeorder:orderBy" class="col-md-2 coffee-pane" [id]="'coffee_' + currentCoffee.id" (mouseenter)="currentCoffee.showOptions = true" (mouseleave)="currentCoffee.showOptions = false">

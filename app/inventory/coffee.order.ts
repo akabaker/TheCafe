@@ -12,9 +12,18 @@ export class CoffeeOrder implements PipeTransform {
         }
         var lowerorder = orderBy.toLowerCase();
         if (lowerorder == 'name') {
-            return items.sort((a, b) => a.name < b.name ? -1 : 1)
+            return items.sort((a, b) => a.name.localeCompare(b.name))
         }
+
+        if (lowerorder == 'roaster') {
+            return items.sort((a, b) => a.roaster.localeCompare(b.roaster))
+        }
+
+        if (lowerorder == 'roast') {
+            return items.sort((a, b) => a.roast.localeCompare(b.roast))
+        }
+
+        return items;
         
     }
-
 }

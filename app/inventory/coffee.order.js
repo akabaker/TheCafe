@@ -15,8 +15,15 @@ var CoffeeOrder = (function () {
         }
         var lowerorder = orderBy.toLowerCase();
         if (lowerorder == 'name') {
-            return items.sort(function (a, b) { return a.name < b.name ? -1 : 1; });
+            return items.sort(function (a, b) { return a.name.localeCompare(b.name); });
         }
+        if (lowerorder == 'roaster') {
+            return items.sort(function (a, b) { return a.roaster.localeCompare(b.roaster); });
+        }
+        if (lowerorder == 'roast') {
+            return items.sort(function (a, b) { return a.roast.localeCompare(b.roast); });
+        }
+        return items;
     };
     return CoffeeOrder;
 }());
