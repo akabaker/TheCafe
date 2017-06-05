@@ -28,22 +28,28 @@
             </div>           
         </div>
         <div class="row">
-            <div *ngFor="let currentCoffee of coffees | coffeefilter:filter | coffeeorder:orderBy" class="col-md-2 coffee-pane" [id]="'coffee_' + currentCoffee.id" (mouseenter)="currentCoffee.showOptions = true" (mouseleave)="currentCoffee.showOptions = false">
-                <div *ngIf="!currentCoffee.editMode" class="display-pane">
-                    <div class="pane-title">{{currentCoffee.name}}</div>
-                    <div class="pane-subtitle">{{currentCoffee.roaster}}</div>
-                    <div class="row pane-details">
-                        <div class="col-md-6">{{currentCoffee.roast}}</div>
-                        <div class="col-md-6 text-right">{{currentCoffee.amount}} oz.</div>
+            <div *ngFor="let currentCoffee of coffees | coffeefilter:filter | coffeeorder:orderBy" class="col-md-2" [id]="'coffee_' + currentCoffee.id" (mouseenter)="currentCoffee.showOptions = true" (mouseleave)="currentCoffee.showOptions = false">
+                <div *ngIf="!currentCoffee.editMode" class="wp-block product">
+                    <span *ngIf="currentCoffee.showOptions" class="wp-block-date-over">
+                        <button class="btn btn-base btn-sm" (click)=goToEdit(currentCoffee)>Edit</button>
+                    </span>
+                    <figure>
+                        <h4 class="product-title">{{currentCoffee.name}}</h4>
+                    </figure>
+                    <!--<h4 class="product-title">{{currentCoffee.name}}</h4>-->
+                    <p>{{currentCoffee.roaster}}</p>
+                    <div class="wp-block-footer">
+                        <span class="pull-left">{{currentCoffee.roast}}</span>
+                        <span class="pull-right price">{{currentCoffee.amount}} oz.</span>
                     </div> 
-                    <div *ngIf="currentCoffee.showOptions" class="row edit-options">
+                   <!-- <div *ngIf="currentCoffee.showOptions" class="row edit-options">
                         <div class="col-md-6">
                             <button (click)="goToEdit(currentCoffee)">Edit</button>
                         </div>
                         <div class="col-md-6">
                             <button (click)="deleteCoffee(currentCoffee)">Delete</button>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
                 <div *ngIf="currentCoffee.editMode" class="edit-pane container">
                     <div class="row" >
