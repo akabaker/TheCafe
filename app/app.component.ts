@@ -3,11 +3,7 @@ import $ = require("jquery");
 
 @Component({
     selector: 'my-app',
-    template: `
-        <h1>{{title}}</h1>
-        <inventory></inventory>      
-        `,
-     styleUrls: ['app/content/bootstrap/css/bootstrap.min.css']   
+    templateUrl: 'app/app.component.html', 
 })
 
 export class AppComponent {

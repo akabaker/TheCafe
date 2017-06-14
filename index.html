@@ -1,35 +1,136 @@
-<html>
-  <head>
-    <title>Coffee Inventory</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <!-- 1. Load libraries -->
-     <!-- Polyfill for older browsers -->
+<!DOCTYPE html>
+<html>  
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <title>Boomerang 2 - MultiPurpose Template</title>
+
+    <!-- Required JS -->
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+
+    <!-- Polyfill for older browsers -->
     <script src="node_modules/core-js/client/shim.min.js"></script>
     <script src="node_modules/zone.js/dist/zone.js"></script>
     <script src="node_modules/reflect-metadata/Reflect.js"></script>
     <script src="node_modules/systemjs/dist/system.src.js"></script>
-    <!-- 2. Configure SystemJS -->
+
+    <!-- Essential styles -->
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css"> 
+    <link rel="stylesheet" href="assets/fancybox/jquery.fancybox.css?v=2.1.5" media="screen">
+     
+    <!-- Boomerang styles -->
+        <link id="wpStylesheet" type="text/css" href="css/global-style.css" rel="stylesheet" media="screen">
+        
+
+    <!-- Favicon -->
+    <link href="images/favicon.png" rel="icon" type="image/png">
+
+    <!-- Assets -->
+    <link rel="stylesheet" href="assets/owl-carousel/owl.carousel.css">
+    <link rel="stylesheet" href="assets/owl-carousel/owl.theme.css">
+    <link rel="stylesheet" href="assets/sky-forms/css/sky-forms.css">    
+    <!--[if lt IE 9]>
+        <link rel="stylesheet" href="assets/sky-forms/css/sky-forms-ie8.css">
+    <![endif]-->
+
+    <!-- Page scripts -->
+    <link rel="stylesheet" href="assets/prettify/css/prettify.css">
+<script src="assets/prettify/js/prettify.js"></script>
+<!--
+<script type="text/javascript">	
+	$(document).ready(function(){
+		// Prettify code blocks
+		prettyPrint();
+
+		// Select all code on focus
+		function SelectText(element) {
+		    var doc = document
+		        , text = doc.getElementById(element)
+		        , range, selection
+		    ;    
+		    if (doc.body.createTextRange) {
+		        range = document.body.createTextRange();
+		        range.moveToElementText(text);
+		        range.select();
+		    } else if (window.getSelection) {
+		        selection = window.getSelection();        
+		        range = document.createRange();
+		        range.selectNodeContents(text);
+		        selection.removeAllRanges();
+		        selection.addRange(range);
+		    }
+		}
+
+		$(function() {
+		    $('pre').click(function() {
+		        var preID = $(this).attr('id');
+		        SelectText(preID);
+		    });
+		});
+	});
+</script> -->
+<!-- 2. Configure SystemJS -->
     <script src="systemjs.config.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="app/content/font-awesome/css/font-awesome.min.css" type="text/css">
-    <link rel="stylesheet" href="app/content/assets/fancybox/jquery.fancybox.css?v=2.1.5" media="screen"> 
-    <link id="wpStylesheet" type="text/css" href="app/content/css/global-style.css" rel="stylesheet" media="screen">
-    <link href="app/content/assets/images/favicon.png" rel="icon" type="image/png">
-    <link rel="stylesheet" href="app/content/assets/sky-forms/css/sky-forms.css">  
-    <link rel="stylesheet" href="app/content/assets/layerslider/css/layerslider.css" type="text/css">
-    <link rel="stylesheet" href="styles.css">
-    <script>
+<script>
       System.import('app').catch(function(err){ console.error(err); });
     </script>
-  </head>
-  <!-- 3. Display the application -->
-  <body>
-    <my-app>Loading...</my-app>
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-  </body>
+</head>
+<body>
+<my-app>Loading...</my-app>
+<!-- Essentials -->
+<script src="js/modernizr.custom.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="js/jquery.mousewheel-3.0.6.pack.js"></script>
+<script src="js/jquery.easing.js"></script>
+<script src="js/jquery.metadata.js"></script>
+<script src="js/jquery.hoverup.js"></script>
+<script src="js/jquery.hoverdir.js"></script>
+<script src="js/jquery.stellar.js"></script>
+
+<!-- Boomerang mobile nav - Optional  -->
+<script src="assets/responsive-mobile-nav/js/jquery.dlmenu.js"></script>
+<script src="assets/responsive-mobile-nav/js/jquery.dlmenu.autofill.js"></script>
+
+<!-- Forms -->
+<script src="assets/ui-kit/js/jquery.powerful-placeholder.min.js"></script> 
+<script src="assets/ui-kit/js/cusel.min.js"></script>
+<script src="assets/sky-forms/js/jquery.form.min.js"></script>
+<script src="assets/sky-forms/js/jquery.validate.min.js"></script>
+<script src="assets/sky-forms/js/jquery.maskedinput.min.js"></script>
+<script src="assets/sky-forms/js/jquery.modal.js"></script>
+
+<!-- Assets -->
+<script src="assets/hover-dropdown/bootstrap-hover-dropdown.min.js"></script>
+<script src="assets/page-scroller/jquery.ui.totop.min.js"></script>
+<script src="assets/mixitup/jquery.mixitup.js"></script>
+<script src="assets/mixitup/jquery.mixitup.init.js"></script>
+<script src="assets/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+<script src="assets/waypoints/waypoints.min.js"></script>
+<script src="assets/milestone-counter/jquery.countTo.js"></script>
+<script src="assets/easy-pie-chart/js/jquery.easypiechart.js"></script>
+<script src="assets/social-buttons/js/rrssb.min.js"></script>
+<script src="assets/nouislider/js/jquery.nouislider.min.js"></script>
+<script src="assets/owl-carousel/owl.carousel.js"></script>
+<script src="assets/bootstrap/js/tooltip.js"></script>
+<script src="assets/bootstrap/js/popover.js"></script>
+
+<!-- Sripts for individual pages, depending on what plug-ins are used -->
+
+<!-- Boomerang App JS -->
+<script src="js/wp.app.js"></script>
+<!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+<![endif]-->
+
+<!-- Temp -- You can remove this once you started to work on your project -->
+<!--<script src="js/jquery.cookie.js"></script>
+<script src="js/wp.switcher.js"></script>
+<script type="text/javascript" src="js/wp.ga.js"></script>-->
+
+
+</body>
 </html>
