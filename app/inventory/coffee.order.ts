@@ -23,6 +23,14 @@ export class CoffeeOrder implements PipeTransform {
             return items.sort((a, b) => a.roast.localeCompare(b.roast))
         }
 
+        if (lowerorder == 'amountasc') {
+            return items.sort((a, b) => a.amount > b.amount ? 1 : -1)
+        }
+
+        if (lowerorder == 'amountdesc') {
+            return items.sort((a, b) => a.amount > b.amount ? -1 : 1)
+        }
+
         return items;
         
     }

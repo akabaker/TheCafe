@@ -23,6 +23,12 @@ var CoffeeOrder = (function () {
         if (lowerorder == 'roast') {
             return items.sort(function (a, b) { return a.roast.localeCompare(b.roast); });
         }
+        if (lowerorder == 'amountasc') {
+            return items.sort(function (a, b) { return a.amount > b.amount ? 1 : -1; });
+        }
+        if (lowerorder == 'amountdesc') {
+            return items.sort(function (a, b) { return a.amount > b.amount ? -1 : 1; });
+        }
         return items;
     };
     return CoffeeOrder;
