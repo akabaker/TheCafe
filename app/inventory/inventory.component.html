@@ -2,15 +2,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <div *ngIf="showAdd">
-                    <input [(ngModel)]=newCoffee.name placeholder="Name"/>
-                    <input [(ngModel)]=newCoffee.roaster placeholder="Roaster"/>
-                    <input [(ngModel)]=newCoffee.roast placeholder="Roast"/>
-                    <input type="number" [(ngModel)]=newCoffee.amount placeholder="Amount"/>
-                    <button (click)="addCoffee(newCoffee)">Add</button>
-                    <button (click)="cancelAdd()">Cancel</button>
-                </div>
-                <button *ngIf="!showAdd" (click)="showAdd = true">Add Coffee</button>
+                <a href="#" *ngIf="!showAdd" (click)="showAdd = true" class="btn btn-icon btn-base fa-plus-square-o"><span>Add Coffee</span></a>
+                <a href="#" *ngIf="showAdd" (click)="showAdd = false" class="btn btn-icon btn-light btn-sm fa-minus-square-o"><span>Cancel</span></a>
             </div>
             <div class="col-md-3">
                 <input class="search" type="search" placeholder="Filter ;)" [(ngModel)]="filter"/>
@@ -26,6 +19,23 @@
                 </select>
                 </label>
             </div>           
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div *ngIf="showAdd">
+                    <div class="wp-block default user-form">
+                        <div class="form-header">
+                            <h4>Add new coffee</h4>
+                        </div>
+                        <input [(ngModel)]=newCoffee.name placeholder="Name"/>
+                        <input [(ngModel)]=newCoffee.roaster placeholder="Roaster"/>
+                        <input [(ngModel)]=newCoffee.roast placeholder="Roast"/>
+                        <input type="number" [(ngModel)]=newCoffee.amount placeholder="Amount"/>
+                        <button (click)="addCoffee(newCoffee)">Add</button>
+                        <button (click)="cancelAdd()">Cancel</button>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="row">
             <div *ngFor="let currentCoffee of coffees | coffeefilter:filter | coffeeorder:orderBy" class="col-md-2" [id]="'coffee_' + currentCoffee.id" (mouseenter)="currentCoffee.showOptions = true" (mouseleave)="currentCoffee.showOptions = false">
