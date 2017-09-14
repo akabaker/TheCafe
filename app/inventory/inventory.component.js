@@ -10,10 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var coffee_component_1 = require("../coffee/coffee.component");
+var brew_component_1 = require("../coffee/brew.component");
 var inventory_service_1 = require("./inventory.service");
+var brews_service_1 = require("./brews.service");
 var Inventory = (function () {
-    function Inventory(_inventoryService) {
+    function Inventory(_inventoryService, _brewService) {
         this._inventoryService = _inventoryService;
+        this._brewService = _brewService;
         this.title = "Current Inventory";
     }
     Inventory.prototype.ngOnInit = function () {
@@ -21,6 +24,7 @@ var Inventory = (function () {
         this.showAdd = false;
         this._inventoryService.getCoffees().subscribe(function (coffees) { return _this.coffees = _this.filteredCoffees = coffees; });
         this.newCoffee = new coffee_component_1.Coffee;
+        this.newBrew = new brew_component_1.Brew;
         this.filter = '';
     };
     Inventory.prototype.addCoffee = function (coffee) {
@@ -57,15 +61,28 @@ var Inventory = (function () {
         containingDiv.removeClass("col-md-6");
         containingDiv.addClass("col-md-2");
     };
+    Inventory.prototype.addBrew = function (brew) {
+        brew.brewedAt = new Date().toLocaleString();
+        this._brewService.add(brew);
+        this.hideNewBrew();
+        this.newBrew = new brew_component_1.Brew;
+    };
+    Inventory.prototype.showNewBrew = function (coffeeId) {
+        this.newBrew.coffeeId = coffeeId;
+        this.showBrew = true;
+    };
+    Inventory.prototype.hideNewBrew = function () {
+        this.showBrew = false;
+    };
     return Inventory;
 }());
 Inventory = __decorate([
     core_1.Component({
         selector: 'inventory',
         templateUrl: 'app/inventory/inventory.component.html',
-        providers: [inventory_service_1.InventoryService]
+        providers: [inventory_service_1.InventoryService, brews_service_1.BrewService]
     }),
-    __metadata("design:paramtypes", [inventory_service_1.InventoryService])
+    __metadata("design:paramtypes", [inventory_service_1.InventoryService, brews_service_1.BrewService])
 ], Inventory);
 exports.Inventory = Inventory;
 //# sourceMappingURL=inventory.component.js.map

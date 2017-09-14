@@ -28,7 +28,7 @@
                             <h4>Add new coffee</h4>
                         </div>
                         <div class="form-body">
-                            <form action id="frmNewCoffee" class="sky-form">
+                            <form action id="frmNewCoffee" class="sky-form" name="addCoffeeForm">
                                 <fieldset class="no-padding">
                                     <section>
                                         <div class="row">
@@ -67,7 +67,46 @@
                                         </div>
                                     </section>
                                 </fieldset>
-                                <button (click)="addCoffee(newCoffee)">Add</button>
+                                <button class="btn btn-icon btn-alt" (click)="addCoffee(newCoffee)">Submit</button>
+                            </form>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div *ngIf="showBrew">
+                    <div class="wp-block default user-form">
+                        <div class="form-header">
+                            <h4>Brew Coffee</h4>
+                        </div>
+                        <div class="form-body">
+                            <form action id="frmNewBrew" class="sky-form" name="addCoffeeBrew">
+                                <fieldset class="no-padding">
+                                    <section>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="input">
+                                                        <i class="icon-append fa fa-fire"></i>
+                                                        <input [(ngModel)]=newBrew.brewLength placeholder="Brew Length (00:00:00)" [ngModelOptions]="{standalone: true}"/>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label class="input">
+                                                        <i class="icon-append fa fa-sun-o"></i>
+                                                        <input [(ngModel)]=newBrew.brewNotes placeholder="I put salt in it" [ngModelOptions]="{standalone: true}"/>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </fieldset>
+                                <button class="btn btn-icon btn-alt" (click)="addBrew(newBrew)">Submit</button>
+                                <button class="btn btn-icon btn-alt btn-light" (click)="hideNewBrew()">Cancel</button>
                             </form>                            
                         </div>
                     </div>
@@ -76,27 +115,22 @@
         </div>
         <div class="row">
             <div *ngFor="let currentCoffee of coffees | coffeefilter:filter | coffeeorder:orderBy" class="col-md-2" [id]="'coffee_' + currentCoffee.id" (mouseenter)="currentCoffee.showOptions = true" (mouseleave)="currentCoffee.showOptions = false">
-                <div *ngIf="!currentCoffee.editMode" class="wp-block product">
+                <div *ngIf="!currentCoffee.editMode" class="wp-block product coffee-pane">
                     <span *ngIf="currentCoffee.showOptions" class="wp-block-date-over">
                         <button class="btn btn-base btn-sm" (click)=goToEdit(currentCoffee)>Edit</button>
+                        <button class="btn btn-base btn-sm" (click)=showNewBrew(currentCoffee.id)>Brew</button>
                     </span>
-                    <figure>
+                    <!--<figure>
                         <h4 class="product-title">{{currentCoffee.name}}</h4>
-                    </figure>
-                    <!--<h4 class="product-title">{{currentCoffee.name}}</h4>-->
-                    <p>{{currentCoffee.roaster}}</p>
+                    </figure>-->
+                        <h4 class="product-title">{{currentCoffee.name}}</h4>
+                    <p>
+                        {{currentCoffee.roaster}}
+                    </p>
                     <div class="wp-block-footer">
                         <span class="pull-left">{{currentCoffee.roast}}</span>
                         <span class="pull-right price">{{currentCoffee.amount}} oz.</span>
                     </div> 
-                   <!-- <div *ngIf="currentCoffee.showOptions" class="row edit-options">
-                        <div class="col-md-6">
-                            <button (click)="goToEdit(currentCoffee)">Edit</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button (click)="deleteCoffee(currentCoffee)">Delete</button>
-                        </div>
-                    </div>-->
                 </div>
                 <div *ngIf="currentCoffee.editMode" class="edit-pane container">
                     <div class="row" >

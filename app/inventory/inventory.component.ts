@@ -1,11 +1,13 @@
 import {Component} from '@angular/core';
 import {Coffee} from '../coffee/coffee.component';
+import {Brew} from '../coffee/brew.component';
 import {InventoryService} from './inventory.service';
+import {BrewService} from './brews.service';
 
 @Component({
     selector: 'inventory',
     templateUrl: 'app/inventory/inventory.component.html',
-    providers: [InventoryService]
+    providers: [InventoryService, BrewService]
 })
 
 export class Inventory {
@@ -14,16 +16,19 @@ export class Inventory {
      showAdd : boolean;
      errorMessage : string;
      newCoffee : Coffee;
+     newBrew : Brew;
+     showBrew: boolean;
      filteredCoffees : Coffee[];
      filter : string;
      orderby : string;
 
-     constructor(private _inventoryService: InventoryService) { }
+     constructor(private _inventoryService: InventoryService, private _brewService: BrewService) { }
 
      ngOnInit() {
        this.showAdd = false;
         this._inventoryService.getCoffees().subscribe(coffees => this.coffees = this.filteredCoffees = coffees);
         this.newCoffee = new Coffee;
+        this.newBrew = new Brew;
         this.filter = '';
       }
 
@@ -64,5 +69,21 @@ export class Inventory {
          var containingDiv = $("#coffee_" + coffee.id);
         containingDiv.removeClass("col-md-6");
         containingDiv.addClass("col-md-2");
+      }
+
+      addBrew(brew: Brew) {
+        brew.brewedAt = new Date().toLocaleString();
+        this._brewService.add(brew);
+        this.hideNewBrew();
+        this.newBrew = new Brew;
+      }
+
+      showNewBrew(coffeeId: number) {
+        this.newBrew.coffeeId = coffeeId;
+        this.showBrew = true;
+      }
+
+      hideNewBrew() {
+        this.showBrew = false;
       }
 }
