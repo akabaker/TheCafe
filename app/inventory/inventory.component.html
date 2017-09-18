@@ -6,18 +6,17 @@
                 <a href="#" *ngIf="showAdd" (click)="cancelAdd()" class="btn btn-icon btn-light btn-sm fa-minus-square-o"><span>Cancel</span></a>
             </div>
             <div class="col-md-3">
-                <input class="search" type="search" placeholder="Filter ;)" [(ngModel)]="filter"/>
+                <input class="search" type="search" class="form-control" placeholder="Filter ;)" [(ngModel)]="filter"/>
             </div> 
             <div class="col-md-3">
-                <label>Order 
-                <select [(ngModel)]="orderBy">
+                <select [(ngModel)]="orderBy" class="form-control">
+                    <option value="default">Order By...</option>
                     <option value="name">Name</option>
                     <option value="roaster">Roaster</option>
                     <option value="roast">Roast</option>
                     <option value="amountAsc">Least to Most</option>
                     <option value="amountDesc">Most to Least</option>
                 </select>
-                </label>
             </div>           
         </div>
         <div class="row">
@@ -90,7 +89,7 @@
                                                 <div class="form-group">
                                                     <label class="input">
                                                         <i class="icon-append fa fa-fire"></i>
-                                                        <input [(ngModel)]=newBrew.brewLength placeholder="Brew Length (00:00:00)" [ngModelOptions]="{standalone: true}"/>
+                                                        <input [(ngModel)]=newBrew.brewLength type=timespan placeholder="Brew Length (00:00:00)" [ngModelOptions]="{standalone: true}"/>
                                                     </label>
                                                 </div>
                                             </div>

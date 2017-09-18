@@ -20,7 +20,7 @@ export class Inventory {
      showBrew: boolean;
      filteredCoffees : Coffee[];
      filter : string;
-     orderby : string;
+     orderBy : string;
 
      constructor(private _inventoryService: InventoryService, private _brewService: BrewService) { }
 
@@ -30,6 +30,7 @@ export class Inventory {
         this.newCoffee = new Coffee;
         this.newBrew = new Brew;
         this.filter = '';
+        this.orderBy = "default";
       }
 
       addCoffee(coffee: Coffee) {

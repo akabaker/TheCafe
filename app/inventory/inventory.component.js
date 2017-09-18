@@ -26,6 +26,7 @@ var Inventory = (function () {
         this.newCoffee = new coffee_component_1.Coffee;
         this.newBrew = new brew_component_1.Brew;
         this.filter = '';
+        this.orderBy = "default";
     };
     Inventory.prototype.addCoffee = function (coffee) {
         var _this = this;
