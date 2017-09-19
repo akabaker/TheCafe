@@ -14,6 +14,13 @@ var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var coffee_filter_1 = require("./pipes/coffee.filter");
 var coffee_order_1 = require("./pipes/coffee.order");
+var router_1 = require("@angular/router");
+var common_1 = require("@angular/common");
+var appRoutes = [
+    { path: 'inventory', component: inventory_component_1.Inventory },
+    { path: 'brewlist', component: brewlist_component_1.BrewList },
+    { path: '', redirectTo: '/inventory', pathMatch: 'full' }
+];
 var AppModule = (function () {
     function AppModule() {
     }
@@ -21,13 +28,15 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule,
+        imports: [router_1.RouterModule.forRoot(appRoutes, { enableTracing: true }),
+            platform_browser_1.BrowserModule,
             forms_1.FormsModule,
             http_1.HttpModule,
             http_1.JsonpModule
         ],
         declarations: [app_component_1.AppComponent, inventory_component_1.Inventory, coffee_filter_1.CoffeeFilter, coffee_order_1.CoffeeOrder, brewlist_component_1.BrewList],
         bootstrap: [app_component_1.AppComponent],
+        providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }]
     })
 ], AppModule);
 exports.AppModule = AppModule;
