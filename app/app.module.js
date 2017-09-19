@@ -9,6 +9,7 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var app_component_1 = require("./app.component");
 var inventory_component_1 = require("./inventory/inventory.component");
+var brewlist_component_1 = require("./brewlist/brewlist.component");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
 var coffee_filter_1 = require("./pipes/coffee.filter");
@@ -25,7 +26,7 @@ AppModule = __decorate([
             http_1.HttpModule,
             http_1.JsonpModule
         ],
-        declarations: [app_component_1.AppComponent, inventory_component_1.Inventory, coffee_filter_1.CoffeeFilter, coffee_order_1.CoffeeOrder],
+        declarations: [app_component_1.AppComponent, inventory_component_1.Inventory, coffee_filter_1.CoffeeFilter, coffee_order_1.CoffeeOrder, brewlist_component_1.BrewList],
         bootstrap: [app_component_1.AppComponent],
     })
 ], AppModule);

@@ -1,0 +1,1 @@
+{"version":3,"file":"brewlist.component.js","sourceRoot":"","sources":["brewlist.component.ts"],"names":[],"mappings":";;;;;;;AAAA,sCAAwC;AAGxC,mEAA+D;AAC/D,2DAAsD;AAQtD,IAAa,QAAQ;IAArB;IACA,CAAC;IAAD,eAAC;AAAD,CAAC,AADD,IACC;AADY,QAAQ;IANpB,gBAAS,CAAC;QACP,QAAQ,EAAE,WAAW;QACrB,WAAW,EAAE,sCAAsC;QACnD,SAAS,EAAE,CAAC,oCAAgB,EAAE,2BAAW,CAAC;KAC7C,CAAC;GAEW,QAAQ,CACpB;AADY,4BAAQ"}
