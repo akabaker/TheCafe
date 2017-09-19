@@ -5,7 +5,7 @@ import {InventoryService} from '../services/inventory.service';
 import {BrewService} from '../services/brews.service';
 
 @Component({
-    selector: 'inventory',
+    selector: 'brewlist',
     templateUrl: 'app/brewlist/brewlist.component.html',
     providers: [InventoryService, BrewService]
 })

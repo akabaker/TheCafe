@@ -15,7 +15,7 @@ var BrewList = (function () {
 }());
 BrewList = __decorate([
     core_1.Component({
-        selector: 'inventory',
+        selector: 'brewlist',
         templateUrl: 'app/brewlist/brewlist.component.html',
         providers: [inventory_service_1.InventoryService, brews_service_1.BrewService]
     })
