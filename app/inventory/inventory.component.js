@@ -11,8 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var coffee_component_1 = require("../coffee/coffee.component");
 var brew_component_1 = require("../coffee/brew.component");
-var inventory_service_1 = require("./inventory.service");
-var brews_service_1 = require("./brews.service");
+var inventory_service_1 = require("../services/inventory.service");
+var brews_service_1 = require("../services/brews.service");
 var Inventory = (function () {
     function Inventory(_inventoryService, _brewService) {
         this._inventoryService = _inventoryService;

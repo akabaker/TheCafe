@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {Coffee} from '../coffee/coffee.component';
 import {Brew} from '../coffee/brew.component';
-import {InventoryService} from './inventory.service';
-import {BrewService} from './brews.service';
+import {InventoryService} from '../services/inventory.service';
+import {BrewService} from '../services/brews.service';
 
 @Component({
     selector: 'inventory',

@@ -4,8 +4,8 @@ import { AppComponent } from './app.component';
 import {Inventory} from './inventory/inventory.component'
 import {FormsModule} from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
-import {CoffeeFilter} from './inventory/coffee.filter';
-import {CoffeeOrder} from './inventory/coffee.order';
+import {CoffeeFilter} from './pipes/coffee.filter';
+import {CoffeeOrder} from './pipes/coffee.order';
 
 @NgModule({
   imports:      [ BrowserModule,

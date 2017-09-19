@@ -11,8 +11,8 @@ var app_component_1 = require("./app.component");
 var inventory_component_1 = require("./inventory/inventory.component");
 var forms_1 = require("@angular/forms");
 var http_1 = require("@angular/http");
-var coffee_filter_1 = require("./inventory/coffee.filter");
-var coffee_order_1 = require("./inventory/coffee.order");
+var coffee_filter_1 = require("./pipes/coffee.filter");
+var coffee_order_1 = require("./pipes/coffee.order");
 var AppModule = (function () {
     function AppModule() {
     }
