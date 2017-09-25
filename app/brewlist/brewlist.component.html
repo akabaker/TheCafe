@@ -1,1 +1,10 @@
 Brews will go here
+<div>
+    <div class="container">
+        <div class="row" *ngFor="let currenBrew of brews">
+            <div class="col-s-12">
+                {{currenBrew.coffee.name}}
+            </div>
+        </div>
+    </div>
+</div>
