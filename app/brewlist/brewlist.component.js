@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var inventory_service_1 = require("../services/inventory.service");
 var brews_service_1 = require("../services/brews.service");
+var moment = require("moment");
 var BrewList = (function () {
     function BrewList(_brewService) {
         this._brewService = _brewService;
@@ -29,6 +30,13 @@ var BrewList = (function () {
         var dateA = new Date(dateOneString);
         var dateB = new Date(dateTwoString);
         return dateA > dateB ? -1 : 1;
+    };
+    BrewList.prototype.getAge = function (brew) {
+        var brewedDate = new Date(brew.brewedAt);
+        var now = new Date();
+        var difference = now.valueOf() - brewedDate.valueOf();
+        var timeDiff = moment.duration(difference);
+        return timeDiff.days() + ":" + timeDiff.hours() + ":" + timeDiff.minutes();
     };
     return BrewList;
 }());

@@ -3,6 +3,7 @@ import {Coffee} from '../coffee/coffee.component';
 import {Brew} from '../coffee/brew.component';
 import {InventoryService} from '../services/inventory.service';
 import {BrewService} from '../services/brews.service';
+import * as moment from 'moment';
 
 @Component({
     selector: 'brewlist',
@@ -20,7 +21,7 @@ export class BrewList {
         this._brewService.getBrews().subscribe(brews => this.brews = this.sortBrewsByAge(brews));
     }
 
-    sortBrewsByAge(brews : Brew[]) {
+    sortBrewsByAge(brews : Brew[]) : Brew[] {
         var sortedBrews = brews.sort((a, b) => this.compareBrewsByAge(a.brewedAt, b.brewedAt));
         return sortedBrews;
     }
@@ -29,5 +30,15 @@ export class BrewList {
         var dateA = new Date(dateOneString);
         var dateB = new Date(dateTwoString);
         return dateA > dateB ? -1 : 1;
+    }
+
+    getAge(brew : Brew) : string {
+       var brewedDate = new Date(brew.brewedAt);
+       var now = new Date();
+       var difference = now.valueOf() - brewedDate.valueOf();
+       var timeDiff = moment.duration(difference);
+    
+       
+       return `${timeDiff.days()}:${timeDiff.hours()}:${timeDiff.minutes()}`;
     }
 }

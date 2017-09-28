@@ -1,9 +1,15 @@
-Brews will go here
+<h3>{{title}}</h3>
 <div>
     <div class="container">
-        <div class="row" *ngFor="let currenBrew of brews">
-            <div class="col-s-12">
-                {{currenBrew.coffee.name}}
+        <div class="row" *ngFor="let currentBrew of brews">
+            <div class="col-s-4">
+                {{currentBrew.coffee.name}}
+            </div>
+            <div class="col-s-4">
+                {{currentBrew.brewedAt}}
+            </div>
+            <div class="col-s-4">
+                {{getAge(currentBrew)}}
             </div>
         </div>
     </div>
