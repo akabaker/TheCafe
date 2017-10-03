@@ -1,6 +1,23 @@
 <div>
     <div class="container">
         <div class="row">
+                <div class="col-md-12">
+                    <div id="brewCarousel" class="carousel carousel-3 slide animate-hover-slide">
+                        <div class="carousel-nav">
+                            <a data-slide="prev" class="left" href="#brewCarousel"><i class="fa fa-angle-left"></i></a>
+                            <a data-slide="next" class="right" href="#brewCarousel"><i class="fa fa-angle-right"></i></a>
+                        </div>
+                        <div class="carousel-inner row">
+                            <div *ngFor="let currentBrew of brews" class="item col-md-4" [ngClass]="{'active': checkActiveCount() < 3}">
+
+                                    {{currentBrew.coffee.name}}
+                                    {{activeCount}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="row">
             <div class="col-md-6">
                 <a href="#" *ngIf="!showAdd" (click)="showAdd = true" class="btn btn-icon btn-base fa-plus-square-o"><span>Add Coffee</span></a>
                 <a href="#" *ngIf="showAdd" (click)="cancelAdd()" class="btn btn-icon btn-light btn-sm fa-minus-square-o"><span>Cancel</span></a>
@@ -18,28 +35,6 @@
                     <option value="amountDesc">Most to Least</option>
                 </select>
             </div>           
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="carousel carousel-1 slide animate-hover-slide">
-                    <div class="carousel-nav">
-                        <a data-slide="prev" class="left" href="#carouselWork"><i class="fa fa-angle-left"></i></a>
-                        <a data-slide="next" class="right" href="#carouselWork"><i class="fa fa-angle-right"></i></a>
-                    </div>
-                    <div class="carousel-inner">
-                        <div class="item active">
-                            <div class="row">
-                                <div class="col-md-12">Potato</div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="row">
-                                <div class="col-md-12">Taters</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="row">
             <div class="col-md-12">

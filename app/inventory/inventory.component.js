@@ -23,9 +23,11 @@ var Inventory = (function () {
         var _this = this;
         this.showAdd = false;
         this._inventoryService.getCoffees().subscribe(function (coffees) { return _this.coffees = _this.filteredCoffees = coffees; });
+        this._brewService.getBrews().subscribe(function (brews) { return _this.brews = brews; });
         this.newCoffee = new coffee_component_1.Coffee;
         this.newBrew = new brew_component_1.Brew;
         this.filter = '';
+        this.activeCount = 0;
         this.orderBy = "default";
     };
     Inventory.prototype.addCoffee = function (coffee) {
@@ -74,6 +76,11 @@ var Inventory = (function () {
     };
     Inventory.prototype.hideNewBrew = function () {
         this.showBrew = false;
+    };
+    Inventory.prototype.checkActiveCount = function () {
+        var currentActive = this.activeCount;
+        this.activeCount++;
+        return currentActive;
     };
     return Inventory;
 }());
