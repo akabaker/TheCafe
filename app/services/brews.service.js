@@ -23,6 +23,9 @@ var BrewService = (function () {
     BrewService.prototype.getBrews = function () {
         return this.http.get(this.brewsUrl + "/hydrated").map(this.extractData).catch(this.handleError);
     };
+    BrewService.prototype.getFreshBrews = function (minutsAgo) {
+        return this.http.get(this.brewsUrl + "/fresh/" + minutsAgo.toString()).map(this.extractFreshData).catch(this.handleError);
+    };
     BrewService.prototype.update = function (brew) {
         var brewOne = { "brew": brew };
         console.log(brewOne);
@@ -53,6 +56,11 @@ var BrewService = (function () {
         var body = res.json();
         console.log('body', body);
         return body.GetBrewsHydratedResult || {};
+    };
+    BrewService.prototype.extractFreshData = function (res) {
+        var body = res.json();
+        console.log('body', body);
+        return body.GetBrewsSinceResult || {};
     };
     BrewService.prototype.handleError = function (error) {
         // In a real world app, we might use a remote logging infrastructure

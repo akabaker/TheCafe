@@ -21,7 +21,7 @@ export class Inventory {
      filteredCoffees : Coffee[];
      filter : string;
      orderBy : string;
-     brews : Brew[];
+     freshBrews : Brew[];
      activeCount : number;
 
      constructor(private _inventoryService: InventoryService, private _brewService: BrewService) { }
@@ -29,14 +29,14 @@ export class Inventory {
      ngOnInit() {
        this.showAdd = false;
         this._inventoryService.getCoffees().subscribe(coffees => this.coffees = this.filteredCoffees = coffees);
-        this._brewService.getBrews().subscribe(brews => this.brews = brews);
+        this._brewService.getFreshBrews(30).subscribe(brews => this.freshBrews = brews);
         this.newCoffee = new Coffee;
         this.newBrew = new Brew;
         this.filter = '';
         this.activeCount = 0;
         this.orderBy = "default";
       }
-
+      
       addCoffee(coffee: Coffee) {
         this._inventoryService.add(coffee).then(coffee => {this.coffees.push(coffee); this.filter = '';});
         this.showAdd = false;

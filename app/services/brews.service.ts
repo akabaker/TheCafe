@@ -19,6 +19,10 @@ export class BrewService {
         return this.http.get(this.brewsUrl+"/hydrated").map(this.extractData).catch(this.handleError);
     }
 
+    getFreshBrews(minutsAgo : number): Observable<Brew[]>{
+      return this.http.get(this.brewsUrl+"/fresh/" + minutsAgo.toString()).map(this.extractFreshData).catch(this.handleError);
+    }
+
     update(brew: Brew): Promise<Brew> {
         var brewOne = {"brew": brew}
         console.log(brewOne);
@@ -52,6 +56,12 @@ export class BrewService {
       let body = res.json();
       console.log('body', body);
       return body.GetBrewsHydratedResult || { };
+    }
+
+    private extractFreshData(res: Response) {
+      let body = res.json();
+      console.log('body', body);
+      return body.GetBrewsSinceResult || { };
     }
 
     private handleError (error: Response | any) {

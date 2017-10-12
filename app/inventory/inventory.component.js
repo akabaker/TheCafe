@@ -23,7 +23,7 @@ var Inventory = (function () {
         var _this = this;
         this.showAdd = false;
         this._inventoryService.getCoffees().subscribe(function (coffees) { return _this.coffees = _this.filteredCoffees = coffees; });
-        this._brewService.getBrews().subscribe(function (brews) { return _this.brews = brews; });
+        this._brewService.getFreshBrews(30).subscribe(function (brews) { return _this.freshBrews = brews; });
         this.newCoffee = new coffee_component_1.Coffee;
         this.newBrew = new brew_component_1.Brew;
         this.filter = '';
